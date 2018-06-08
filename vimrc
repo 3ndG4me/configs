@@ -1,6 +1,6 @@
 syntax on
 syntax on
-colorscheme crystallite 
+colorscheme Crystallite 
 set paste
 set tabstop=4
 set softtabstop=4
