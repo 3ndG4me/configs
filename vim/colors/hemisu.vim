@@ -13,6 +13,8 @@ if exists("syntax_on")
   syntax reset
 endif
 
+set background=dark
+
 " Declare theme name
 let g:colors_name = "hemisu"
 
