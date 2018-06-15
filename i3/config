@@ -181,3 +181,10 @@ exec --no-startup-id nitrogen --restore
 
 # Polybar
 exec_always --no-startup-id "~/.config/polybar/launch.sh"
+
+# Pulseaudio Volume Buttons Thinkpad T420
+bindsym XF86AudioMute exec "pactl set-sink-mute 0 toggle"
+bindsym XF86AudioRaiseVolume exec "pactl set-sink-volume 0 +5%"
+bindsym XF86AudioLowerVolume exec "pactl set-sink-volume 0 -5%"
+bindsym XF86AudioMicMute exec "pactl set-source-mute 1 toggle"
+
