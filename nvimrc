@@ -7,6 +7,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
 Plug 'craigemery/vim-autotag'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'tpope/vim-surround'
 
 call plug#end()
 
@@ -30,4 +31,6 @@ set hlsearch
 
 " Keymaps
 let mapleader=";"
-noremap <Leader>t :NERDTreeFocus<CR>
+nnoremap <Leader>t :NERDTreeFocus<CR>
+nnoremap <Leader>r :%s///g<Left><Left>
+nnoremap <Tab> <C-w>w

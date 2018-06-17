@@ -1,4 +1,4 @@
-URxvt.font: xft:Anonymous Pro for Powerline:size=11
+URxvt.font: xft:Hack Bold:size=10
 URxvt.scrollBar: false
 
 urxvt*foreground: white
