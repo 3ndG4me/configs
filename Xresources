@@ -1,4 +1,4 @@
-URxvt.font: xft:VCR OSD Mono:size=10
+URxvt.font: xft:Anonymous Pro for Powerline:size=11
 URxvt.scrollBar: false
 
 urxvt*foreground: white
