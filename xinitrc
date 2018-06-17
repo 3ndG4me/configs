@@ -1,3 +1,3 @@
 #! /bin/bash
-xrdb -merge ~/.Xresources
+xrdb ~/.Xresources
 exec i3
