@@ -1,0 +1,33 @@
+CYAN="\033[38;5;14m"
+RED="\033[38;5;196m"
+BRIGHTGREEN="\033[38;5;10m"
+ORANGE="\033[38;5;214m"
+LIGHTPURPLE="\033[38;5;13m"
+LIGHTBLUE="\033[38;5;38m"
+YELLOW="\033[38;5;11m"
+RESET="\033[0;00m"
+
+print_pre_prompt(){
+    USERNAME=`whoami`
+    HOST=`hostname -s`
+    DIR=`pwd`
+    PROMPT="$"
+    if [ $USERNAME == "root" ]
+        then
+        PROMPT="#"
+    fi
+    PS1L_NO_COLOR="┌—————$USERNAME@$HOST:$DIR: $PROMPT"
+    PS1L="┌—————$CYAN$USERNAME$RESET$RED@$RESET$BRIGHTGREEN$HOST$RESET$ORANGE:$RESET$LIGHTPURPLE$DIR$RESET $LIGHTBLUE$PROMPT$RESET"
+    PS1R="[`date +%H:%M:%S`]"
+	printf "\n${PS1L}${RED}%$(($COLUMNS-${#PS1L_NO_COLOR}))s${RESET}\n|\n└" "$PS1R"
+}
+export PROMPT_COMMAND=print_pre_prompt
+export PS1="$RED>$RESET$YELLOW>$RESET$BRIGHTGREEN>$RESET "
+
+# fuzzy_history - repeat history
+fuzzy_history(){
+    echo -n  `history | fzf +s --tac | sed 's/ *[0-9]* *//'`
+}
+
+alias fh=fuzzy_history
+alias vim=nvim
