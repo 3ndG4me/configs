@@ -24,6 +24,16 @@ print_pre_prompt(){
 export PROMPT_COMMAND=print_pre_prompt
 export PS1="$RED>$RESET$YELLOW>$RESET$BRIGHTGREEN>$RESET "
 
+OS=`uname -s`
+
+# ls config
+if [ $OS == "Darwin" ];
+    then
+    export LSCOLORS=Fx
+    export CLICOLOR=1
+fi
+
+
 # fuzzy_history - repeat history
 fuzzy_history(){
     echo -n  `history | fzf +s --tac | sed 's/ *[0-9]* *//'`
