@@ -37,7 +37,7 @@ else
     if [ $TERM_CHECK =~ "[yY](es)*" ];
         then
         echo "${YELLOW}Setting up URXVT and its Symlinks...${RESET}"
-        sudo apt install urxvt
+        sudo apt install rxvt-unicode
         rm ~/.Xresources
         rm ~/.xinitrc
         ln -s ~/configs/Xresources ~/.Xresources
