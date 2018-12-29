@@ -32,7 +32,7 @@ else
     sudo apt install neofetch 
     sudo apt install git
     sudo apt install wget
-    echo -e "${YELLOW}Do you want to set up URXVT on this box?${RESET}"
+    echo -e "${YELLOW}Do you want to set up URXVT on this box?(y/N)${RESET}"
     read TERM_CHECK
     if [ $TERM_CHECK == "y" || $TERM_CHECK == "Y" ];
         then
