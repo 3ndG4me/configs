@@ -54,7 +54,7 @@ fi
 if [ ! -f ~/.vim/autoload/plug.vim ]; then
         echo -e "${YELLOW}Installing vim-plug files${RESET}"
         mkdir ~/.vim/autoload/
-        wget https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim -o ~/.vim/autoload/plug.vim
+        wget https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim -O ~/.vim/autoload/plug.vim
 else
         echo -e "${GREEN}vim-plug files already installed${RESET}"
 fi
