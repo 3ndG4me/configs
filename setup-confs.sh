@@ -10,11 +10,31 @@ if [ $OS == "Darwin" ];
     brew install tmux
     brew install ranger
     brew install fzf
+    brew install neofetch
+    brew install git
 else
-    echo -e "${RED}LINUX WIP DEBIAN ONLY${RESET}"
-    apt install tmux
-    apt install ranger
-    apt install fzf
+    echo -e "${GREEN}LINUX WIP DEBIAN ONLY${RESET}"
+    sudo apt install tmux
+    sudo apt install ranger
+    sudo apt install fzf
+    sudo apt install neofetch 
+    sudo apt install git
+    echo "${YELLOW}Do you want to set up URXVT on this box?${RESET}"
+    read TERM_CHECK
+    if [ $TERM_CHECK == =~ [yY](es)* ];
+        then
+        echo "${YELLOW}Setting up URXVT and its Symlinks...${RESET}"
+        sudo apt install urxvt
+        rm ~/.Xresources
+        rm ~/.xinitrc
+        ln -s ~/configs/Xresources ~/.Xresources
+        ln -s ~/configs/xinitrc ~/.xinitrc
+        echo "${GREEN}URXVT Setup Done!${RESET}"
+    
+    else
+        echo "${GREEN}Skipping URXVT set up...${RESET}"
+    fi
+    
 fi
 
 # Vim-Plug Setup
