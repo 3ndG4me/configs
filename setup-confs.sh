@@ -48,7 +48,12 @@ fi
 # Vim-Plug Setup
 if [ ! -f ~/.vim/autoload/plug.vim ]; then
         echo -e "${YELLOW}Installing vim-plug files${RESET}"
-        curl -fLo ~/.vim/autoload/plug.vim --create-dirs \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+        if [ $OS == "Darwin" ];
+            then
+            /usr/local/opt/curl/bin/curl -fLo ~/.vim/autoload/plug.vim --create-dirs \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+        else
+            curl -fLo ~/.vim/autoload/plug.vim --create-dirs \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+        fi
 else
         echo -e "${GREEN}vim-plug files already installed${RESET}"
 fi
