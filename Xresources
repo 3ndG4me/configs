@@ -1,4 +1,4 @@
-URxvt.font: xft:Hack:size=10
+URxvt.font: xft:Meslo:size=10
 URxvt.scrollBar: false
 
 urxvt*foreground: white
