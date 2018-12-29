@@ -32,20 +32,20 @@ else
     sudo apt install neofetch 
     sudo apt install git
     sudo apt install wget
-    echo "${YELLOW}Do you want to set up URXVT on this box?${RESET}"
+    echo -e "${YELLOW}Do you want to set up URXVT on this box?${RESET}"
     read TERM_CHECK
-    if [ $TERM_CHECK =~ "[yY](es)*" ];
+    if [ $TERM_CHECK == "y" || $TERM_CHECK == "Y" ];
         then
-        echo "${YELLOW}Setting up URXVT and its Symlinks...${RESET}"
+        echo -e "${YELLOW}Setting up URXVT and its Symlinks...${RESET}"
         sudo apt install rxvt-unicode
         rm ~/.Xresources
         rm ~/.xinitrc
         ln -s ~/configs/Xresources ~/.Xresources
         ln -s ~/configs/xinitrc ~/.xinitrc
-        echo "${GREEN}URXVT Setup Done!${RESET}"
+        echo -e "${GREEN}URXVT Setup Done!${RESET}"
     
     else
-        echo "${GREEN}Skipping URXVT set up...${RESET}"
+        echo -e "${GREEN}Skipping URXVT set up...${RESET}"
     fi
     
 fi
@@ -82,7 +82,7 @@ ln -s ~/configs/tmux.conf ~/.tmux.conf
 
     # Ranger
 ln -s ~/configs/ranger ~/.config/ranger
-echo "${YELLOW}Grabbing Meslo Font for Powerline...${RESET}"
+echo -e "${YELLOW}Grabbing Meslo Font for Powerline...${RESET}"
 wget https://github.com/powerline/fonts/raw/master/Meslo%20Dotted/Meslo%20LG%20L%20DZ%20Regular%20for%20Powerline.ttf
-echo "${YELLOW}Be sure to manually set this in your terminal if on macOS or not using URXVT!${RESET}"
+echo -e "${YELLOW}Be sure to manually set this in your terminal if on macOS or not using URXVT!${RESET}"
 echo -e "${GREEN}DONE!${RESET}"
