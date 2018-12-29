@@ -28,7 +28,7 @@ else
     sudo apt install git
     echo "${YELLOW}Do you want to set up URXVT on this box?${RESET}"
     read TERM_CHECK
-    if [ $TERM_CHECK == =~ [yY](es)* ];
+    if [ $TERM_CHECK =~ [yY](es)* ];
         then
         echo "${YELLOW}Setting up URXVT and its Symlinks...${RESET}"
         sudo apt install urxvt
