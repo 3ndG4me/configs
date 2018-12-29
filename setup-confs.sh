@@ -6,7 +6,8 @@ RESET='\033[0m'
 OS=`uname -s`
 if [ $OS == "Darwin" ];
     then
-    echo -e "${GREEN}Setting up macOS Dependencies, be sure Hombrew is installed!${RESET}"
+    echo -e "${GREEN}Setting up macOS Dependencies${RESET}"
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     brew install tmux
     brew install ranger
     brew install fzf
