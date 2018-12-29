@@ -19,6 +19,7 @@ if [ $OS == "Darwin" ];
     brew install fzf
     brew install neofetch
     brew install git
+    brew install wget
     brew install curl --with-openssl
 else
     echo -e "${GREEN}LINUX WIP DEBIAN ONLY${RESET}"
@@ -27,6 +28,7 @@ else
     sudo apt install fzf
     sudo apt install neofetch 
     sudo apt install git
+    sudo apt install wget
     echo "${YELLOW}Do you want to set up URXVT on this box?${RESET}"
     read TERM_CHECK
     if [ $TERM_CHECK =~ "[yY](es)*" ];
@@ -48,12 +50,8 @@ fi
 # Vim-Plug Setup
 if [ ! -f ~/.vim/autoload/plug.vim ]; then
         echo -e "${YELLOW}Installing vim-plug files${RESET}"
-        if [ $OS == "Darwin" ];
-            then
-            /usr/local/opt/curl/bin/curl -fLo ~/.vim/autoload/plug.vim --create-dirs \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-        else
-            curl -fLo ~/.vim/autoload/plug.vim --create-dirs \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-        fi
+        mkdir ~/.vim/autoload/
+        wget https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim -o ~/.vim/autoload/plug.vim
 else
         echo -e "${GREEN}vim-plug files already installed${RESET}"
 fi
