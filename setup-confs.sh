@@ -34,7 +34,7 @@ else
     sudo apt install wget
     echo -e "${YELLOW}Do you want to set up URXVT on this box?(y/N)${RESET}"
     read TERM_CHECK
-    if [ $TERM_CHECK == "y" || $TERM_CHECK == "Y" ];
+    if [ $TERM_CHECK == "y" ] || [ $TERM_CHECK == "Y" ];
         then
         echo -e "${YELLOW}Setting up URXVT and its Symlinks...${RESET}"
         sudo apt install rxvt-unicode
