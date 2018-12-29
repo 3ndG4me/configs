@@ -3,6 +3,9 @@ YELLOW='\033[0;33m'
 GREEN='\033[0;32m'
 RESET='\033[0m'
 
+#Make sure we are in the configs repo in home in case I ran this script outside of the configs dir
+cd ~/configs
+
 OS=`uname -s`
 if [ $OS == "Darwin" ];
     then
@@ -56,7 +59,7 @@ else
         echo -e "${GREEN}vim-plug files already installed${RESET}"
 fi
 
-cd /opt && git clone https://github.com/tmux-plugins/tmux-logging.git
+git clone https://github.com/tmux-plugins/tmux-logging.git
 
 # Create Symlinks
 echo -e "${YELLOW}Creating Symlinks...${RESET}"
