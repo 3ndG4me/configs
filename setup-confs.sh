@@ -82,4 +82,7 @@ ln -s ~/configs/tmux.conf ~/.tmux.conf
 
     # Ranger
 ln -s ~/configs/ranger ~/.config/ranger
+echo "${YELLOW}Grabbing Meslo Font for Powerline...${RESET}"
+wget https://github.com/powerline/fonts/raw/master/Meslo%20Dotted/Meslo%20LG%20L%20DZ%20Regular%20for%20Powerline.ttf
+echo "${YELLOW}Be sure to manually set this in your terminal if on macOS or not using URXVT!${RESET}"
 echo -e "${GREEN}DONE!${RESET}"
