@@ -7,7 +7,13 @@ OS=`uname -s`
 if [ $OS == "Darwin" ];
     then
     echo -e "${GREEN}Setting up macOS Dependencies${RESET}"
-    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    which -s brew
+    if [[ $? != 0 ]] ; then
+        # Install Homebrew
+        ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    else
+        brew update
+    fi
     brew install tmux
     brew install ranger
     brew install fzf
