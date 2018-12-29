@@ -40,4 +40,3 @@ fuzzy_history(){
 }
 
 alias fh=fuzzy_history
-alias vim=nvim
