@@ -19,6 +19,7 @@ if [ $OS == "Darwin" ];
     brew install fzf
     brew install neofetch
     brew install git
+    brew install curl --with-openssl
 else
     echo -e "${GREEN}LINUX WIP DEBIAN ONLY${RESET}"
     sudo apt install tmux
