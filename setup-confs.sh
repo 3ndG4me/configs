@@ -25,7 +25,7 @@ if [ $OS == "Darwin" ];
     brew install wget
     brew install curl --with-openssl
 else
-    echo -e "${GREEN}LINUX WIP DEBIAN ONLY${RESET}"
+    echo -e "${GREEN}LINUX DEBIAN ONLY${RESET}"
     sudo apt install tmux
     sudo apt install ranger
     sudo apt install fzf
@@ -47,7 +47,13 @@ else
     else
         echo -e "${GREEN}Skipping URXVT set up...${RESET}"
     fi
-    
+
+    KALI=`uname -r | grep -o "kali"`
+    if [ $KALI == "kali" ];
+        then
+        echo -e "${YELLOW}Kali Linux detected...setting up 1337 h@x0r stuffz${RESET}"
+        # TODO
+    fi
 fi
 
 # Vim-Plug Setup
