@@ -59,7 +59,11 @@ else
         echo -e "${GREEN}vim-plug files already installed${RESET}"
 fi
 
-git clone https://github.com/tmux-plugins/tmux-logging.git
+# Get tmux-logging plugin
+rm -rf ~/.tmux-logging
+mkdir ~/.tmux-logging
+cd ~/.tmux-logging/ && git clone https://github.com/tmux-plugins/tmux-logging.git
+cd ~/configs
 
 # Create Symlinks
 echo -e "${YELLOW}Creating Symlinks...${RESET}"
