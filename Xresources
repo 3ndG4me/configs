@@ -2,7 +2,7 @@ URxvt.font: xft:Meslo:size=10
 URxvt.scrollBar: false
 
 urxvt*foreground: white
-urxvt*background: black
+urxvt*background: [90]#000000
 
 urxvt*transparent: true
 urxvt*shading: 15
