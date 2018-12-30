@@ -24,6 +24,7 @@ if [ $OS == "Darwin" ];
     brew install git
     brew install wget
     brew install curl --with-openssl
+    brew install golang
 else
     echo -e "${GREEN}LINUX DEBIAN ONLY${RESET}"
     sudo apt install tmux
@@ -32,7 +33,8 @@ else
     sudo apt install neofetch 
     sudo apt install git
     sudo apt install wget
-    echo -e "${YELLOW}Do you want to set up URXVT on this box?(y/N)${RESET}"
+    sudo apt install golang  
+echo -e "${YELLOW}Do you want to set up URXVT on this box?(y/N)${RESET}"
     read TERM_CHECK
     if [ $TERM_CHECK == "y" ] || [ $TERM_CHECK == "Y" ];
         then
@@ -52,7 +54,30 @@ else
     if [ $KALI == "kali" ];
         then
         echo -e "${YELLOW}Kali Linux detected...setting up 1337 h@x0r stuffz${RESET}"
-        # TODO
+        # WIP
+        sudo apt install gobuster
+        sudo apt install empire
+        sudo apt install veil
+        sudo apt install virtualbox
+        sudo apt install vagrant
+        cd /opt/
+        # Quack Dependencies
+        apt install gconf-service gconf2 gconf2-common gvfs-bin libgconf-2-4
+        wget https://github.com/3ndG4me/Quack/raw/master/release-builds/Quack_1.0.0_amd64.deb -O /opt/quack.deb
+        sudo dpkg -i quack.deb
+        rm quack.deb
+        mkdir cutter
+        wget https://github.com/radareorg/cutter/releases/download/v1.7.3/Cutter-v1.7.3-x64.Linux.AppImage -O /opt/cutter/Cutter
+        chmod +x /opt/cutter/Cutter
+        mkdir ida
+        wget https://out7.hex-rays.com/files/idafree70_linux.run -O /opt/ida/ida_setup.run
+        chmod +x /opt/ida/ida_setup.run
+        /opt/ida/ida_setup.run
+        rm -rf /opt/ida
+        git clone https://github.com/Ne0nd0g/merlin.git
+        git clone https://github.com/danielmiessler/SecLists.git
+        cd ~/configs
+        
     fi
 fi
 
