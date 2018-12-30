@@ -12,6 +12,12 @@ print_pre_prompt(){
     HOST=`hostname -s`
     DIR=`pwd`
     PROMPT="$"
+    #Tilda if in home directory
+    if [ $DIR == $HOME ];
+        then
+        DIR="~"
+    fi
+    #Change prompt if you are root user using this config
     if [ $USERNAME == "root" ]
         then
         PROMPT="#"
