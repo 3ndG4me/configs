@@ -77,7 +77,12 @@ echo -e "${YELLOW}Do you want to set up URXVT on this box?(y/N)${RESET}"
         git clone https://github.com/Ne0nd0g/merlin.git
         git clone https://github.com/danielmiessler/SecLists.git
         cd ~/configs
+        echo -e "${YELLOW}Creating Kali Specific Symlinks...${RESET}"
+        echo -e "${RED}REMOVING EXISTING CONFIGS!!!${RESET}"
+        rm  ~/.gdbinit
         
+        # GDB
+        ln -s ~/configs/gdbinit ~/.gdbinit
     fi
 fi
 

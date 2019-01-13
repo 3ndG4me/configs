@@ -3,10 +3,10 @@
 # Get the aliases and functions
 if [ -f ~/.bashrc ]; then
 		  . ~/.bashrc
-  fi
+fi
 
-  # User specific environment and startup programs
+# User specific environment and startup programs
 
-  PATH=$PATH:$HOME/bin
-
-  export PATH
+PATH=$PATH:$HOME/bin
+export GOPATH=$HOME/go
+export PATH
