@@ -13,4 +13,5 @@ export GOPATH=$HOME/go
 if [ $OS == "Darwin" ];
     then
     PATH=$PATH:/opt/metasploit-framework/bin
+fi
 export PATH
