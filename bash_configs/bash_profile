@@ -6,7 +6,11 @@ if [ -f ~/.bashrc ]; then
 fi
 
 # User specific environment and startup programs
+OS=`uname -s`
 
 PATH=$PATH:$HOME/bin
 export GOPATH=$HOME/go
+if [ $OS == "Darwin" ];
+    then
+    PATH=$PATH:/opt/metasploit-framework/bin
 export PATH
