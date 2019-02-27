@@ -5,7 +5,25 @@ ORANGE="\033[38;5;214m"
 LIGHTPURPLE="\033[38;5;13m"
 LIGHTBLUE="\033[38;5;38m"
 YELLOW="\033[38;5;11m"
+UNDERLINED="\e[4m"
+BLINK="\e[5m"
+BOLD="\e[1m"
 RESET="\033[0;00m"
+cat << "EOF"
+                        |'-'-'|
+                         |===|
+                         |   |
+                         |   |
+                         )___(
+                        (=====)
+                        }====={
+EOF
+MOTD1="57 65 6c 63 "
+MOTD2="6f 6d 65 20 "
+MOTD3="62 61 63 6b "
+MOTD4="20 33 6e 64 "
+MOTD5="47 34 6d 65 21"
+printf "${BOLD}${BLINK}${UNDERLINED}${CYAN}$MOTD1${RESET}${BOLD}${BLINK}${UNDERLINED}${RED}$MOTD2${RESET}${BOLD}${BLINK}${UNDERLINED}${BRIGHTGREEN}$MOTD3${RESET}${BOLD}${BLINK}${UNDERLINED}${ORANGE}$MOTD4${RESET}${BOLD}${BLINK}${UNDERLINED}${LIGHTPURPLE}$MOTD5${RESET}"
 
 print_pre_prompt(){
     USERNAME=`whoami`
