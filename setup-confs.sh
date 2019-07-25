@@ -23,8 +23,15 @@ if [ $OS == "Darwin" ];
     brew install neofetch
     brew install git
     brew install wget
-    brew install curl --with-openssl
+    brew install curl
     brew install golang
+    
+    if [[ $1 == "hack" ]]; then
+        brew install gobuster
+        brew install sqlmap
+        brew install john
+        brew install hashcat
+    fi
 else
     echo -e "${GREEN}LINUX DEBIAN ONLY${RESET}"
     sudo apt install tmux
