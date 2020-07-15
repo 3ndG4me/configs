@@ -116,10 +116,18 @@ rm ~/.bash_profile
 rm ~/.vimrc
 rm ~/.tmux.conf
 rm -rf ~/.config/ranger
-
     # Bash
 ln -s ~/configs/bash_configs/bashrc ~/.bashrc
 ln -s ~/configs/bash_configs/bash_profile ~/.bash_profile
+
+if [ $SHELL == "/bin/zsh" ]; then
+    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    rm ~/.zshrc
+    rm ~/.oh-my-zsh/themes/hax.zsh-theme
+    ln -s ~/configs/zsh_configs/zshrc ~/.zshrc
+    ln -s ~/configs/zsh_configs/hax.zsh-theme ~/.oh-my-zsh/themes/hax.zsh-theme
+fi
+
 
     # VIM
 ln -s ~/configs/vimrc ~/.vimrc

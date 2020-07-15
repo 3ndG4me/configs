@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/casey.erdmann/.oh-my-zsh"
+export ZSH="/Users/cerdmann/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -76,6 +76,16 @@ source $ZSH/oh-my-zsh.sh
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
+# User specific environment and startup programs
+OS=`uname -s`
+PATH=$PATH:$HOME/bin
+export GOPATH=$HOME/go
+if [[ $OS == "Darwin" ]];
+    then
+    PATH=$PATH:/opt/metasploit-framework/bin
+fi
+export PATH
+
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
@@ -97,3 +107,23 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+
+# ls config
+if [[ $OS == "Darwin" ]];
+    then
+    export LSCOLORS=Fx
+    export CLICOLOR=1
+else
+    alias ls="ls --color"
+    export LS_COLORS="di=1;35"
+fi
+
+
+# fuzzy_history - repeat history
+fuzzy_history(){
+    print -z $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf --height=20 +s -e --tac | sed 's/ *[0-9]* *//')
+}
+
+alias fh=fuzzy_history
+alias grep="grep -i --color"
