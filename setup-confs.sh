@@ -16,6 +16,7 @@ if [ $OS == "Darwin" ];
         ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     else
         brew update
+        brew upgrade
     fi
     brew install tmux
     brew install ranger
@@ -25,15 +26,22 @@ if [ $OS == "Darwin" ];
     brew install wget
     brew install curl
     brew install golang
+    brew install --cask docker
+    echo -e "${YELLOW}Pausing to allow manual Docker Desktop setup, press enter to continue...${RESET}"
+    read
+    pip3 install venv
     
     if [[ $1 == "hack" ]]; then
         brew install gobuster
         brew install sqlmap
         brew install john
         brew install hashcat
+        curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall && chmod 755 msfinstall && ./msfinstall
     fi
 else
     echo -e "${GREEN}LINUX DEBIAN ONLY${RESET}"
+    sudo apt update
+    sudo apt full-upgrade
     sudo apt install tmux
     sudo apt install ranger
     sudo apt install fzf
@@ -41,6 +49,8 @@ else
     sudo apt install git
     sudo apt install wget
     sudo apt install golang  
+    pip3 install venv
+
 echo -e "${YELLOW}Do you want to set up URXVT on this box?(y/N)${RESET}"
     read TERM_CHECK
     if [ $TERM_CHECK == "y" ] || [ $TERM_CHECK == "Y" ];
@@ -63,7 +73,7 @@ echo -e "${YELLOW}Do you want to set up URXVT on this box?(y/N)${RESET}"
         echo -e "${YELLOW}Kali Linux detected...setting up 1337 h@x0r stuffz${RESET}"
         # WIP
         sudo apt install gobuster
-        sudo apt install empire
+        sudo apt install powershell-empire
         sudo apt install veil
         sudo apt install virtualbox
         sudo apt install vagrant
@@ -92,6 +102,27 @@ echo -e "${YELLOW}Do you want to set up URXVT on this box?(y/N)${RESET}"
         ln -s ~/configs/gdbinit ~/.gdbinit
     fi
 fi
+
+echo -e "${GREEN}Setting up 3rd Party Tools${RESET}"
+mkdir ~/tools
+cd ~/tools
+
+echo -e "${YELLOW}Cloning and setting up Armory...${RESET}"
+git clone https://github.com/depthsecurity/armory.git
+cd armory
+git checkout armory2.0
+cd docker
+sudo docker build -t armory2 .
+cd ../../
+
+echo -e "${YELLOW}Cloning and setting up Impacket...${RESET}"
+git clone https://github.com/SecureAuthCorp/impacket.git
+cd impacket
+python3 -m venv impacket-env
+source impacket-env/bin/activate
+pip3 install .
+deactivate
+cd ..
 
 # Vim-Plug Setup
 if [ ! -f ~/.vim/autoload/plug.vim ]; then
