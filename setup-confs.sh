@@ -138,6 +138,7 @@ if [[ $2 == "tools" ]]; then
     docker run -d --name sliver_tmp sliver:latest
     mkdir BINS
     docker cp sliver_tmp:/opt/sliver-server BINS/sliver-server-linux-bleeding
+    sleep 10
     docker rm sliver_tmp
     cd BINS
     wget https://github.com/BishopFox/sliver/releases/download/v1.2.0/sliver-client_linux.zip
