@@ -18,13 +18,13 @@ else:
 ARMORY_CONFIG = {
     'ARMORY_BASE_PATH': data_path,
 
-#'ARMORY_CUSTOM_MODULES': [
-#    home + custom_modules,
-#],
+    'ARMORY_CUSTOM_MODULES': [
+        home + custom_modules,
+    ],
 
-#'ARMORY_CUSTOM_REPORTS': [
-#    home + custom_reports,
-#],
+    'ARMORY_CUSTOM_REPORTS': [
+        home + custom_reports,
+    ],
 }
 
 DATABASES = {
