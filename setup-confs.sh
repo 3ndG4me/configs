@@ -87,17 +87,17 @@ else
         cd ~/tools
         # Quack Dependencies
         apt install gconf-service gconf2 gconf2-common gvfs-bin libgconf-2-4
-        wget https://github.com/3ndG4me/Quack/raw/master/release-builds/Quack_1.0.0_amd64.deb -O /opt/quack.deb
+        wget https://github.com/3ndG4me/Quack/raw/master/release-builds/Quack_1.0.0_amd64.deb -O ~/tools/quack.deb
         sudo dpkg -i quack.deb
         rm quack.deb
         mkdir cutter
-        wget https://github.com/radareorg/cutter/releases/download/v1.7.3/Cutter-v1.7.3-x64.Linux.AppImage -O /opt/cutter/Cutter
-        chmod +x /opt/cutter/Cutter
+        wget https://github.com/radareorg/cutter/releases/download/v1.7.3/Cutter-v1.7.3-x64.Linux.AppImage -O ~/tools/cutter/Cutter
+        chmod +x ~/tools/cutter/Cutter
         mkdir ida
-        wget https://out7.hex-rays.com/files/idafree70_linux.run -O /opt/ida/ida_setup.run
-        chmod +x /opt/ida/ida_setup.run
-        /opt/ida/ida_setup.run
-        rm -rf /opt/ida
+        wget https://out7.hex-rays.com/files/idafree70_linux.run -O ~/tools/ida/ida_setup.run
+        chmod +x ~/tools/ida/ida_setup.run
+        ~/tools/ida/ida_setup.run
+        rm -rf ~/tools/ida
         cd ~/configs
         echo -e "${YELLOW}Creating Kali Specific Symlinks...${RESET}"
         echo -e "${RED}REMOVING EXISTING CONFIGS!!!${RESET}"
