@@ -10,6 +10,7 @@ OS=`uname -s`
 
 PATH=$PATH:$HOME/bin
 export GOPATH=$HOME/go
+PATH=$PATH:$HOME/bin:$GOPATH/bin
 if [ $OS == "Darwin" ];
     then
     PATH=$PATH:/opt/metasploit-framework/bin
