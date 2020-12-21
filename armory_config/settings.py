@@ -28,8 +28,6 @@ ARMORY_CONFIG = {
     ],
 }
 
-print(ARMORY_CONFIG)
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
