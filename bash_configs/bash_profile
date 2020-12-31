@@ -14,5 +14,6 @@ PATH=$PATH:$HOME/bin:$GOPATH/bin
 if [ $OS == "Darwin" ];
     then
     PATH=$PATH:/opt/metasploit-framework/bin
+    PATH=/usr/local/opt/openssl@1.1/bin:$PATH
 fi
 export PATH
