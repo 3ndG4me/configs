@@ -5,7 +5,7 @@ import pathlib
 
 data_path = pathlib.Path(str(pathlib.Path().absolute()) + "/armory_data")
 home = str(pathlib.Path.home())
-abolute_home = "DEFINE_ME"
+abolute_home = "/Users/cerdmann"
 custom_modules = abolute_home + "/tools/armory_custom/modules"
 custom_reports = abolute_home + "/tools/armory_custom/reports"
 

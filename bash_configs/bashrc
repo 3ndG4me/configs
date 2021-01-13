@@ -42,7 +42,7 @@ print_pre_prompt(){
     fi
     PS1L_NO_COLOR="┌—————$USERNAME@$HOST:$DIR: $PROMPT"
     PS1L="┌—————$CYAN$USERNAME$RESET$RED@$RESET$BRIGHTGREEN$HOST$RESET$ORANGE:$RESET$LIGHTPURPLE$DIR$RESET $LIGHTBLUE$PROMPT$RESET"
-    PS1R="[`date +%H:%M:%S`]"
+    PS1R="[`date +%y-%m-%d` - `date +%H:%M:%S`]"
 	printf "\n${PS1L}${RED}%$(($COLUMNS-${#PS1L_NO_COLOR}))s${RESET}" "$PS1R"
 }
 export PROMPT_COMMAND=print_pre_prompt

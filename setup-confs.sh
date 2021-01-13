@@ -20,6 +20,7 @@ if [ $OS == "Darwin" ];
     fi
     brew install tmux
     brew install ranger
+    brew install ansifilter
     brew install fzf
     brew install neofetch
     brew install git
@@ -198,10 +199,10 @@ else
         echo -e "${GREEN}vim-plug files already installed${RESET}"
 fi
 
-# Get tmux-logging plugin
-rm -rf ~/.tmux-logging
-mkdir ~/.tmux-logging
-cd ~/.tmux-logging/ && git clone https://github.com/tmux-plugins/tmux-logging.git
+# Get tmux plugin manager
+rm -rf ~/.tmux/plugins/tpm
+mkdir -p ~/.tmux/plugins/tpm
+cd ~/.tmux/plugins/tpm && git clone https://github.com/tmux-plugins/tpm
 cd ~/configs
 
 # Create Symlinks

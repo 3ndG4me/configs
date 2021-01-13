@@ -105,7 +105,7 @@ function get_git_prompt {
 }
 
 function get_time_stamp {
-    echo "%*"
+    echo "%D - %*"
 }
 
 function get_space {
