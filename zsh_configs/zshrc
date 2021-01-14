@@ -136,6 +136,9 @@ alias gscript-build-linux-all='docker run -it -v $PWD:/root/share -v $PWD/out:/t
 # upx packer
 alias upx-pack='docker run -v $PWD:/data lalyos/upx -k --best --ultra-brute -o ${1}.upx ${1}'
 
+# tmux with logging
+alias tmuxl='tmux new -s log_`date +%H_%M_%S` \; send-keys "~/.tmux/plugins/tmux-logging/scripts/toggle_logging.sh" Enter'
+
 # armory2 config
 # currently they are the same on either platform, but keeping separate in case platform specific flags need to be specified in the future
 if [[ $OS == "Darwin" ]];
