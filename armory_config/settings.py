@@ -8,6 +8,7 @@ home = str(pathlib.Path.home())
 abolute_home = "CHANGEME"
 custom_modules = abolute_home + "/tools/armory_custom/modules"
 custom_reports = abolute_home + "/tools/armory_custom/reports"
+custom_webapps = abolute_home + "/tools/armory_webapps"
 
 if data_path.exists():
     data_path = str(pathlib.Path().absolute()) + "/armory_data"
@@ -25,6 +26,10 @@ ARMORY_CONFIG = {
 
     'ARMORY_CUSTOM_REPORTS': [
         custom_reports,
+    ],
+    
+    'ARMORY_CUSTOM_WEBAPPS': [
+         custom_webapps,
     ],
 }
 
