@@ -58,9 +58,8 @@ else
     echo -e "${YELLOW}Pausing to allow a chance to add yourself to the docker group (optional)...${RESET}"
     read
 
-    echo -e "${YELLOW}Do you want to set up URXVT on this box?(y/N)${RESET}"
-    read TERM_CHECK
-    if [ $TERM_CHECK == "y" ] || [ $TERM_CHECK == "Y" ];
+    $TERM_CHECK = $3
+    if [ $TERM_CHECK == "urxvt" ];
         then
         echo -e "${YELLOW}Setting up URXVT and its Symlinks...${RESET}"
         sudo apt install rxvt-unicode
