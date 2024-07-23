@@ -42,7 +42,7 @@ if [ $OS == "Darwin" ];
 else
     echo -e "${GREEN}LINUX DEBIAN ONLY${RESET}"
     sudo apt update
-    sudo apt full-upgrade
+    sudo apt upgrade
     sudo apt install tmux
     sudo apt install ranger
     sudo apt install fzf
@@ -50,28 +50,26 @@ else
     sudo apt install git
     sudo apt install wget
     sudo apt install golang 
-    curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
-    echo 'deb [arch=amd64] https://download.docker.com/linux/debian buster stable' | sudo tee /etc/apt/sources.list.d/docker.list
-    sudo apt update
-    sudo apt install docker-ce
-    sudo systemctl enable Docker
-    echo -e "${YELLOW}Pausing to allow a chance to add yourself to the docker group (optional)...${RESET}"
-    read
+    # Add Docker's official GPG key:
+    sudo apt-get update
+    sudo apt-get install ca-certificates curl
+    sudo install -m 0755 -d /etc/apt/keyrings
+    sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+    sudo chmod a+r /etc/apt/keyrings/docker.asc
 
-    $TERM_CHECK = $3
-    if [ $TERM_CHECK == "urxvt" ];
-        then
-        echo -e "${YELLOW}Setting up URXVT and its Symlinks...${RESET}"
-        sudo apt install rxvt-unicode
-        rm ~/.Xresources
-        rm ~/.xinitrc
-        ln -s ~/configs/Xresources ~/.Xresources
-        ln -s ~/configs/xinitrc ~/.xinitrc
-        echo -e "${GREEN}URXVT Setup Done!${RESET}"
-    
-    else
-        echo -e "${GREEN}Skipping URXVT set up...${RESET}"
-    fi
+    # Add the repository to Apt sources:
+    echo \
+    "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+    $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+    sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+    sudo apt-get update
+    sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+    sudo systemctl enable Docker
+    sudo usermod -aG docker $USER
+    sudo apt install virtualbox
+    sudo apt install vagrant
+    curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall && chmod 755 msfinstall && sudo ./msfinstall && rm msfinstall
+    read
 
     KALI=`uname -r | grep -o "kali"`
     if [ $KALI == "kali" ];
@@ -86,15 +84,15 @@ else
         mkdir ~/tools
         cd ~/tools
         # Quack Dependencies
-        apt install gconf-service gconf2 gconf2-common gvfs-bin libgconf-2-4
+        sudo apt install gconf-service gconf2 gconf2-common gvfs-bin libgconf-2-4
         wget https://github.com/3ndG4me/Quack/raw/master/release-builds/Quack_1.0.0_amd64.deb -O ~/tools/quack.deb
         sudo dpkg -i quack.deb
         rm quack.deb
         mkdir cutter
-        wget https://github.com/radareorg/cutter/releases/download/v1.7.3/Cutter-v1.7.3-x64.Linux.AppImage -O ~/tools/cutter/Cutter
+        wget https://github.com/rizinorg/cutter/releases/download/v2.3.4/Cutter-v2.3.4-Linux-x86_64.AppImage -O ~/tools/cutter/Cutter
         chmod +x ~/tools/cutter/Cutter
         mkdir ida
-        wget https://out7.hex-rays.com/files/idafree70_linux.run -O ~/tools/ida/ida_setup.run
+        wget https://out7.hex-rays.com/files/idafree84_linux.run -O ~/tools/ida/ida_setup.run
         chmod +x ~/tools/ida/ida_setup.run
         ~/tools/ida/ida_setup.run
         rm -rf ~/tools/ida
@@ -114,14 +112,6 @@ if [[ $2 == "tools" ]]; then
     mkdir -p ~/tools
     cd ~/tools
 
-    echo -e "${YELLOW}Cloning and setting up Armory...${RESET}"
-    git clone https://github.com/depthsecurity/armory.git
-    cd armory
-    git checkout armory2.0
-    cd docker
-    docker build -t armory2 .
-    cd ../../
-
     echo -e "${YELLOW}Cloning and setting up Impacket...${RESET}"
     git clone https://github.com/SecureAuthCorp/impacket.git
     cd impacket
@@ -134,21 +124,17 @@ if [[ $2 == "tools" ]]; then
     echo -e "${YELLOW}Cloning and setting up Sliver C2...${RESET}"
     git clone https://github.com/BishopFox/sliver.git
     cd sliver
-    docker build -t sliver .
-    docker run -d --name sliver_tmp sliver:latest
+    sudo docker build -t sliver .
+    sudo docker run -d --name sliver_tmp sliver:latest
     mkdir BINS
-    docker cp sliver_tmp:/opt/sliver-server BINS/sliver-server-linux-bleeding
+    sudo docker cp sliver_tmp:/opt/sliver-server BINS/sliver-server-linux-bleeding
     sleep 10
-    docker rm sliver_tmp
+    sudo docker rm sliver_tmp
     cd BINS
-    wget https://github.com/BishopFox/sliver/releases/download/v1.2.0/sliver-client_linux.zip
-    wget https://github.com/BishopFox/sliver/releases/download/v1.2.0/sliver-client_macos.zip
-    wget https://github.com/BishopFox/sliver/releases/download/v1.2.0/sliver-server_linux.zip
-    wget https://github.com/BishopFox/sliver/releases/download/v1.2.0/sliver-server_macos.zip
+    wget https://github.com/BishopFox/sliver/releases/download/v1.5.42/sliver-client_linux.zip
+    wget https://github.com/BishopFox/sliver/releases/download/v1.5.42/sliver-server_linux.zip
     unzip sliver-client_linux.zip
-    unzip sliver-client_macos.zip
     unzip sliver-server_linux.zip
-    unzip sliver-server_macos.zip
     cd ..
     cd ..
 
@@ -167,11 +153,6 @@ if [[ $2 == "tools" ]]; then
 
     echo -e "${YELLOW}Cloning and setting up Gortscanner...${RESET}"
     git clone https://github.com/3ndG4me/Gortscanner
-    cd Gortscanner
-    make gort-darwin
-    make gort-linux
-    make gort-windows
-    cd ..
 
     echo -e "${YELLOW}Cloning and setting up KaliLists and SecLists...${RESET}"
     git clone https://github.com/3ndG4me/KaliLists
@@ -184,7 +165,7 @@ if [[ $2 == "tools" ]]; then
     git clone https://github.com/ahhh/gscripts.git
 
     echo -e "${YELLOW}Cloning and setting up Lalyos UPX Container...${RESET}"
-    docker pull lalyos/upx:latest
+    sudo docker pull lalyos/upx:latest
 
     cd ~/configs
 fi
